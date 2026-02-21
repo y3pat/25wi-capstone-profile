@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>ICU Sepsis Decision Support System | Capstone Project</title>
+  <meta name="description" content="An interpretable early warning system for adult ICU sepsis risk—helping clinicians trust and act on predictions.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Theme toggle: run early to prevent flash -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || pref);
+    })();
+  </script>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Sepsis DSS</a>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#" class="nav-cta">Try the App</a></li>
+        <li>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+            <span class="theme-icon theme-sun" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </span>
+            <span class="theme-icon theme-moon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </span>
+          </button>
+        </li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1 class="hero-title scroll-reveal">ICU Sepsis Decision Support System</h1>
+        <p class="hero-tagline scroll-reveal">Making sepsis detection transparent, so clinicians can trust the alerts</p>
+        <a href="#" class="btn btn-primary scroll-reveal">Try the App</a>
+        <div class="hero-visual scroll-reveal" aria-hidden="true">
+          <div class="hero-placeholder">Hero graphic placeholder</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="overview">
+      <div class="container container--wide">
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Why Sepsis Matters</h3>
+            <p>Sepsis is the leading cause of death in hospitals, and it's notoriously hard to detect. Early detection saves lives—but the tools we have today fall short.</p>
+          </div>
+        </article>
+
+        <article class="content-row content-row--image-right">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">The Problem with Current Tools</h3>
+            <p><strong>Trust.</strong> Clinicians can't see why the model flags a patient, so they distrust alerts.</p>
+            <p><strong>False negatives vs. false positives.</strong> Models are often tuned to avoid missing sepsis, which drives up false positives and adds to the noise.</p>
+            <p><strong>Alarm fatigue.</strong> Too many alerts lead staff to tune them out—including the ones that matter.</p>
+          </div>
+          <div class="content-box content-box--image scroll-reveal">
+            <div class="image-placeholder">Diagram: Alerts vs. response rate</div>
+          </div>
+        </article>
+
+        <article class="content-row content-row--image-right">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">What We Built</h3>
+            <p>We built an interpretable early warning system for adult ICU sepsis risk. It surfaces the reasoning behind each prediction, focuses on trend analysis over 6-hour windows, and lets clinicians see the same data the model uses—vitals and procedures—right alongside the predictions.</p>
+          </div>
+          <div class="content-box content-box--image scroll-reveal">
+            <div class="image-placeholder">App preview screenshot</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container container--wide">
+        <article class="content-row content-row--image-left">
+          <div class="content-box content-box--image scroll-reveal">
+            <div class="image-placeholder">MIMIC-IV data flow diagram</div>
+          </div>
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Data &amp; Cohort</h3>
+            <p>We use MIMIC-IV, a research database of real ICU patients. Our cohort is limited to adult ICU stays so the model and product match real clinical settings.</p>
+          </div>
+        </article>
+
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Model Approach</h3>
+            <p>We use an interpretable model with 6-hour prediction windows and a focus on trend analysis—so clinicians can see how a patient's trajectory drives the risk score, not just a single snapshot.</p>
+          </div>
+        </article>
+
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Product Design</h3>
+            <p>The app is built with Django and PostgreSQL, styled with Tailwind CSS, and uses Plotly for charts. The ML model will run on AWS; for development we use a stub so we can iterate on the UI and workflow.</p>
+          </div>
+        </article>
+
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Privacy &amp; Ethics</h3>
+            <p>We use pseudonymized names and hide internal database IDs (e.g. subject_id, stay_id, hadm_id) so the demo stays appropriate for a public-facing tool.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="product">
+      <div class="container container--wide">
+        <article class="content-row content-row--image-right">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Management View</h3>
+            <p>A patient list for a simulated ICU day. Each row shows pseudonymized name, age, gender, race, care unit, and admission time. A simulation clock advances hour by hour so you can see how the census and risk evolve. The goal is a quick overview so clinicians can see who needs a closer look.</p>
+          </div>
+          <div class="content-box content-box--image scroll-reveal">
+            <div class="image-placeholder">Management view screenshot</div>
+          </div>
+        </article>
+
+        <article class="content-row content-row--image-left">
+          <div class="content-box content-box--image scroll-reveal">
+            <div class="image-placeholder">Patient detail view screenshot</div>
+          </div>
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Patient Detail View</h3>
+            <p>Vital signs over time—heart rate, blood pressure, SpO2, respiratory rate, temperature, glucose—plus procedure events and the sepsis risk score and comorbidity group. As the simulation advances, you see how predictions update as new data arrives. Everything the model "sees" is visible so clinicians can validate the alerts.</p>
+          </div>
+        </article>
+
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Design Choices</h3>
+            <p>We show predictions right next to the underlying data so clinicians can connect the dots. No black box—just the same view the model uses, with the risk and reasoning in plain sight to support trust.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="summary">
+      <div class="container container--wide">
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Summary</h3>
+            <p>We built an interpretable sepsis early warning system that tackles the trust problem and reduces alarm fatigue by showing clinicians why the model flags a patient and what data it used.</p>
+          </div>
+        </article>
+
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Limitations</h3>
+            <p>The demo currently uses a stub model. We're moving the full ML pipeline to AWS and will plug it in once it's ready.</p>
+          </div>
+        </article>
+
+        <article class="content-row">
+          <div class="content-box content-box--text scroll-reveal">
+            <h3 class="content-box__title">Try It Yourself</h3>
+            <p>See the system in action—run the simulation, open a patient, and watch how risk and vitals evolve together.</p>
+            <a href="#" class="btn btn-primary">Try the App</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-links">
+          <a href="#">Full Report</a>
+          <a href="#">GitHub</a>
+        </div>
+        <p class="footer-credits">ICU Sepsis Decision Support System — Capstone Project</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
