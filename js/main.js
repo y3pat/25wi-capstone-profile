@@ -74,6 +74,47 @@
     reveals.forEach((el) => observer.observe(el));
   }
 
+  // Image lightbox: click expandable images to view full size
+  function initImageLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const backdrop = lightbox?.querySelector('.lightbox__backdrop');
+    const closeBtn = lightbox?.querySelector('.lightbox__close');
+    const expandableImages = document.querySelectorAll('.img-expandable');
+
+    if (!lightbox || !lightboxImg) return;
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('is-open');
+      lightbox.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }
+
+    expandableImages.forEach((img) => {
+      img.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    if (backdrop) backdrop.addEventListener('click', closeLightbox);
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
+  }
+
   // Highlight nav link for current section on scroll
   function initScrollHighlight() {
     const sections = document.querySelectorAll('section[id]');
@@ -102,12 +143,14 @@
       initThemeToggle();
       initNav();
       initScrollReveal();
+      initImageLightbox();
       initScrollHighlight();
     });
   } else {
     initThemeToggle();
     initNav();
     initScrollReveal();
+    initImageLightbox();
     initScrollHighlight();
   }
 })();
