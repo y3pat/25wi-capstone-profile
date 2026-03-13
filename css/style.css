@@ -553,6 +553,74 @@ body {
   margin-top: 1rem;
 }
 
+/* Reduce gap before acknowledgements */
+#summary {
+  padding-bottom: 2rem;
+}
+
+/* Acknowledgements & References */
+.acknowledgements {
+  background: #1e293b;
+  padding: var(--section-padding) 1.5rem;
+  color: #fff;
+}
+
+.acknowledgements__heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1.25rem;
+}
+
+.acknowledgements__heading + .references,
+.acknowledgements__heading + .team-list {
+  margin-top: 0;
+}
+
+.team-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+
+.team-list li {
+  color: #fff;
+  font-size: 1.0625rem;
+}
+
+.team-list a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.team-list a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+.references {
+  padding-left: 1.25rem;
+  margin: 0;
+  color: #fff;
+}
+
+.references li {
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.references li:last-child {
+  margin-bottom: 0;
+}
+
 /* Footer */
 .footer {
   padding: 2rem 1.5rem;
